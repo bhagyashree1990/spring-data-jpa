@@ -1,9 +1,12 @@
 package com.spring.jpa.entity;
 
 import javax.persistence.Entity;
+import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Review {
@@ -13,6 +16,10 @@ public class Review {
 	private Long id;
 	
 	private String comment;
+	
+	@ManyToOne
+	@JoinColumn(name="book_id",foreignKey = @ForeignKey(name="book_id_fk"))
+	private Book book;
 
 	@Override
 	public int hashCode() {
@@ -56,4 +63,11 @@ public class Review {
 		this.comment = comment;
 	}
 	
+	public Book getBook() {
+		return book;
+	}
+	
+	public void setBook(Book book) {
+		this.book = book;
+	}
 }

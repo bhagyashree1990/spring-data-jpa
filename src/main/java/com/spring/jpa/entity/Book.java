@@ -21,8 +21,7 @@ public class Book {
 	
 	private String title;
 	
-	@OneToMany
-	@JoinColumn(name="book_id",foreignKey = @ForeignKey(name="book_id_fk"))
+	@OneToMany(mappedBy = "book")	
 	private List<Review> reviews=new ArrayList<>();
 
 	@ManyToMany
