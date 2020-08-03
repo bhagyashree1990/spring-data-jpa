@@ -10,6 +10,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 
+import com.spring.jpa.enumeration.Gender;
+
 @Entity
 public class Author {
 	@Id
@@ -21,6 +23,8 @@ public class Author {
 	private String lastName;
 
 	private LocalDate dateOfBirth;
+	
+	private Gender gender;
 	
 	@ManyToMany(mappedBy = "authors")
 	private List<Book> books = new ArrayList<>();
@@ -81,6 +85,14 @@ public class Author {
 	
 	public void setDateOfBirth(LocalDate dateOfBirth) {
 		this.dateOfBirth = dateOfBirth;
+	}
+	
+	public Gender getGender() {
+		return gender;
+	}
+	
+	public void setGender(Gender gender) {
+		this.gender = gender;
 	}
 	
 	public List<Book> getBooks() {
