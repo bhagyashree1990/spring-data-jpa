@@ -35,6 +35,9 @@ public class Book {
 			)
 	private List<Author> authors=new ArrayList<>();
 	
+	@OneToMany(mappedBy = "book")
+	private List<BookPublisher> bookPublishers;
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -99,6 +102,14 @@ public class Book {
 	
 	public void setAuthors(List<Author> authors) {
 		this.authors = authors;
+	}
+	
+	public List<BookPublisher> getBookPublishers() {
+		return bookPublishers;
+	}
+	
+	public void setBookPublishers(List<BookPublisher> bookPublishers) {
+		this.bookPublishers = bookPublishers;
 	}
 	
 	@Override
