@@ -13,9 +13,10 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.OrderBy;
 
 @Entity
-public class Book {
+public class Book implements Comparable<Book>{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -33,6 +34,7 @@ public class Book {
 				joinColumns = {@JoinColumn(name="book_id", foreignKey = @ForeignKey(name="book_author_fk_1"))},
 				inverseJoinColumns = {@JoinColumn(name="author_id",foreignKey = @ForeignKey(name="book_author_fk_2"))}
 			)
+	@OrderBy("dateOfBirth DESC")
 	private List<Author> authors=new ArrayList<>();
 	
 	@OneToMany(mappedBy = "book")
@@ -118,7 +120,11 @@ public class Book {
 		if (title != null && !title.trim().isEmpty())
 			result += "title: " + title;
 		return result;
+	}
+
+	@Override
+	public int compareTo(Book book) {
+		return this.id.compareTo(book.getId());
 	}	
-	
 	
 }

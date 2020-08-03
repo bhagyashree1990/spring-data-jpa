@@ -1,8 +1,8 @@
 package com.spring.jpa.entity;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.SortedSet;
+import java.util.TreeSet;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,6 +10,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 
+import org.hibernate.annotations.SortComparator;
+import org.hibernate.annotations.SortNatural;
+
+import com.spring.jpa.comparator.SortByTitle;
 import com.spring.jpa.enumeration.Gender;
 
 @Entity
@@ -27,7 +31,9 @@ public class Author {
 	private Gender gender;
 	
 	@ManyToMany(mappedBy = "authors")
-	private List<Book> books = new ArrayList<>();
+//	@SortNatural
+	@SortComparator(SortByTitle.class)
+	private SortedSet<Book> books = new TreeSet<>();
 	
 	@Override
 	public int hashCode() {
@@ -95,11 +101,11 @@ public class Author {
 		this.gender = gender;
 	}
 	
-	public List<Book> getBooks() {
+	public SortedSet<Book> getBooks() {
 		return books;
 	}
 	
-	public void setBooks(List<Book> books) {
+	public void setBooks(SortedSet<Book> books) {
 		this.books = books;
 	}
 
