@@ -9,6 +9,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
 @Entity
@@ -23,6 +25,13 @@ public class Book {
 	@JoinColumn(name="book_id",foreignKey = @ForeignKey(name="book_id_fk"))
 	private List<Review> reviews=new ArrayList<>();
 
+	@ManyToMany
+	@JoinTable(name="book_author",
+				joinColumns = {@JoinColumn(name="book_id", foreignKey = @ForeignKey(name="book_id_fk"))},
+				inverseJoinColumns = {@JoinColumn(name="author_id",foreignKey = @ForeignKey(name="author_id_fk"))}
+			)
+	private List<Author> authors=new ArrayList<>();
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -73,6 +82,14 @@ public class Book {
 		this.reviews = reviews;
 	}
 
+	public List<Author> getAuthors() {
+		return authors;
+	}
+	
+	public void setAuthors(List<Author> authors) {
+		this.authors = authors;
+	}
+	
 	@Override
 	public String toString() {
 		String result = getClass().getSimpleName() + " ";
