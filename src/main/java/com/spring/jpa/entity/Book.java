@@ -12,6 +12,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Book {
@@ -20,6 +21,9 @@ public class Book {
 	private Long id;
 	
 	private String title;
+	
+	@OneToOne(mappedBy = "book")
+	private Manuscript manuscript;
 	
 	@OneToMany(mappedBy = "book")	
 	private List<Review> reviews=new ArrayList<>();
@@ -71,6 +75,14 @@ public class Book {
 
 	public void setTitle(String title) {
 		this.title = title;
+	}
+	
+	public Manuscript getManuscript() {
+		return manuscript;
+	}
+	
+	public void setManuscript(Manuscript manuscript) {
+		this.manuscript = manuscript;
 	}
 
 	public List<Review> getReviews() {
