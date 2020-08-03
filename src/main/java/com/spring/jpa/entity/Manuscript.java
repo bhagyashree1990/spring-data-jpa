@@ -17,7 +17,7 @@ public class Manuscript {
 	private String file;
 	
 	@OneToOne
-	@JoinColumn(name="book_id",foreignKey = @ForeignKey(name="book_id_fk"))
+	@JoinColumn(name="book_id",foreignKey = @ForeignKey(name="manuscript_book_id_fk"))
 	private Book book;
 
 	@Override

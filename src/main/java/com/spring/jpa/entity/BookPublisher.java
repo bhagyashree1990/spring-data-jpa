@@ -1,5 +1,7 @@
 package com.spring.jpa.entity;
 
+import java.util.Date;
+
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -8,6 +10,8 @@ import javax.persistence.ForeignKey;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.MapsId;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import com.spring.jpa.embeddable.BookPublisherId;
 import com.spring.jpa.enumeration.Format;
@@ -21,15 +25,18 @@ public class BookPublisher {
 	private Format format;
 	
 	@ManyToOne
-	@JoinColumn(name="book_id",foreignKey = @ForeignKey(name="book_id_fk"))
+	@JoinColumn(name="book_id",foreignKey = @ForeignKey(name="book_publisher_fk_1"))
 	@MapsId("bookId")
 	private Book book;
 	
 	@ManyToOne
-	@JoinColumn(name = "publisher_id",foreignKey = @ForeignKey(name="publisher_id_fk"))
+	@JoinColumn(name = "publisher_id",foreignKey = @ForeignKey(name="book_publisher_fk_2"))
 	@MapsId("publisherId")
 	private Publisher publisher;
 
+	@Temporal(TemporalType.DATE)
+	private Date dateOfPublishing;
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -87,5 +94,12 @@ public class BookPublisher {
 	public void setPublisher(Publisher publisher) {
 		this.publisher = publisher;
 	}
-		
+	
+	public Date getDateOfPublishing() {
+		return dateOfPublishing;
+	}
+	
+	public void setDateOfPublishing(Date dateOfPublishing) {
+		this.dateOfPublishing = dateOfPublishing;
+	}
 }

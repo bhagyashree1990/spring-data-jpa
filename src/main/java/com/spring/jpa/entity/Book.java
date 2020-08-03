@@ -30,8 +30,8 @@ public class Book {
 
 	@ManyToMany
 	@JoinTable(name="book_author",
-				joinColumns = {@JoinColumn(name="book_id", foreignKey = @ForeignKey(name="book_id_fk"))},
-				inverseJoinColumns = {@JoinColumn(name="author_id",foreignKey = @ForeignKey(name="author_id_fk"))}
+				joinColumns = {@JoinColumn(name="book_id", foreignKey = @ForeignKey(name="book_author_fk_1"))},
+				inverseJoinColumns = {@JoinColumn(name="author_id",foreignKey = @ForeignKey(name="book_author_fk_2"))}
 			)
 	private List<Author> authors=new ArrayList<>();
 	

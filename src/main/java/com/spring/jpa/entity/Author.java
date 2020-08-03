@@ -1,5 +1,6 @@
 package com.spring.jpa.entity;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,6 +20,8 @@ public class Author {
 	
 	private String lastName;
 
+	private LocalDate dateOfBirth;
+	
 	@ManyToMany(mappedBy = "authors")
 	private List<Book> books = new ArrayList<>();
 	
@@ -70,6 +73,14 @@ public class Author {
 
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
+	}
+	
+	public LocalDate getDateOfBirth() {
+		return dateOfBirth;
+	}
+	
+	public void setDateOfBirth(LocalDate dateOfBirth) {
+		this.dateOfBirth = dateOfBirth;
 	}
 	
 	public List<Book> getBooks() {
