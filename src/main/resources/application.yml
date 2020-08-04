@@ -20,7 +20,11 @@ logging:
    level:
       com.spring.jpa: DEBUG
       org.hibernate: ERROR
-      org.springframework.web: ERROR
+      #Check Executed SQL Statements
+      org.hibernate.sql: DEBUG 
+      #Log Bind Parameter Values
+      org.hibernate.type.descriptor.sql: TRACE
+      org.springframework.web: ERROR      
 management.endpoints.web.exposure.include: "*"
 management.endpoints.web.exposure.exclude: "beans"
 management.endpoint.health.show-details: always           
