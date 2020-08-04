@@ -62,6 +62,14 @@ To test application
 |`http://localhost:8080/jpa-demo/authors/search/findByFirstNameContainingIgnoreCase?firstName=o`					| GET |
 |`http://localhost:8080/jpa-demo/authors/search/findByLastName?lastName=Green`										| GET |
 |`http://localhost:8080/jpa-demo/authors/search/updateDateOfBirth?dateOfBirth=1990-04-01&id=6`					| GET |
+|`http://localhost:8080/jpa-demo/authors/search/findByBooksTitle?title=Rich%20Dad%20Poor%20Dad`					| GET |
+|`http://localhost:8080/jpa-demo/authors/search/findByBooksTitleContaining?title=rich`								| GET |
+|`http://localhost:8080/jpa-demo/authors/search/findByBooksTitleContainingIgnoreCase?title=ricH`					| GET |
+|`http://localhost:8080/jpa-demo/authors/search/findByBooksTitleOrderByLastNameDesc?title=Rich%20Dad%20Poor%20Dad`					| GET |
+|`http://localhost:8080/jpa-demo/authors/search/findByBooksTitle?title=Rich%20Dad%20Poor%20Dad&sort=lastName,desc`					| GET |
+|`http://localhost:8080/jpa-demo/books/search/findByAuthorsFirstNameAndAuthorsLastName?firstName=Dan&lastName=Brown`				| GET |
+|`http://localhost:8080/jpa-demo/books/search/findFirst5ByAuthorsFirstNameAndAuthorsLastName?firstName=Dan&lastName=Brown`									| GET |
+|`http://localhost:8080/jpa-demo/books/search/findByAuthorsFirstNameAndAuthorsLastName?firstName=Dan&lastName=Brown&page=0&size=4`					| GET |
 
 ### Actuator
 
