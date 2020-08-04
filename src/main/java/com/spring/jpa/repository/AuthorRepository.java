@@ -60,4 +60,10 @@ public interface AuthorRepository extends BaseRepository<Author,Long> {
 	Integer updateDateOfBirth(
 			@DateTimeFormat(iso = ISO.DATE)
 			@Param("dateOfBirth")LocalDate dateOfBirth,@Param("id")Long id);
+	
+	List<Author> findByBooksTitle(@Param("title") String title,Sort sort);
+	List<Author> findByBooksTitleContaining(@Param("title") String title);
+	List<Author> findByBooksTitleContainingIgnoreCase(@Param("title") String title);
+	List<Author> findByBooksTitleOrderByLastNameDesc(@Param("title") String title);
+	
 }
