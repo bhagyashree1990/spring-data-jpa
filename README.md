@@ -13,7 +13,7 @@ Spring Data JPA and Hibernate
 10. Ordering vs Sorting `@OrderBy @SortNatural @SortComparator`
 11. Log SQL Statements
 12. Using `@Query` annotation
-
+13. Derived Queries with Spring Data JPA
 
 ## Built With
 
