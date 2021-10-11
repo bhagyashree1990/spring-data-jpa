@@ -3,15 +3,16 @@ server:
       context-path: /jpa-demo
 spring:
    datasource:
-      url: jdbc:mysql://localhost:3306/demo
-      username: root
-      password: root
-      initialization-mode: always
+      url: jdbc:postgresql://localhost:5432/demo
+      username: postgres
+      password: mstar123
+      initialization-mode: never #always
       hikari:
          data-source-properties:
              useSSL: false
              createDatabaseIfNotExist: true
    jpa:
+     database-platform: org.hibernate.dialect.PostgreSQLDialect
      show-sql: true
      open-in-view: false
      hibernate:

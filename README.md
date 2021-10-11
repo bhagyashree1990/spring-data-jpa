@@ -14,6 +14,7 @@ Spring Data JPA and Hibernate
 11. Log SQL Statements
 12. Using `@Query` annotation
 13. Derived Queries with Spring Data JPA
+14. Generate Values of Basic Entity Attributes with Hibernate using `@GeneratorType`
 
 ## Built With
 
